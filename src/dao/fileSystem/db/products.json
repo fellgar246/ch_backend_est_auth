@@ -1,0 +1,57 @@
+[
+	{
+		"title": "shirt",
+		"description": "ropa de mujer",
+		"code": "abc141",
+		"price": 799,
+		"status": true,
+		"stock": 12,
+		"category": "Shirt",
+		"thumbnail": [],
+		"id": 1
+	},
+	{
+		"title": "scarf",
+		"description": "ropa de mujer",
+		"code": "abc142",
+		"price": 599,
+		"status": true,
+		"stock": 12,
+		"category": "accesorios",
+		"thumbnail": [],
+		"id": 2
+	},
+	{
+		"title": "tenis",
+		"description": "ropa de mujer",
+		"code": "abc148",
+		"price": 599,
+		"status": true,
+		"stock": 12,
+		"category": "accesorios",
+		"thumbnail": [],
+		"id": 3
+	},
+	{
+		"title": "bracelet",
+		"description": "ropa de mujer",
+		"code": "abc149",
+		"price": 299,
+		"status": true,
+		"stock": 20,
+		"category": "accesorios",
+		"thumbnail": [],
+		"id": 4
+	},
+	{
+		"title": "T-shirt",
+		"description": "T-shirt",
+		"code": "123c",
+		"price": "299",
+		"status": true,
+		"stock": "12",
+		"category": "Kids",
+		"thumbnail": [],
+		"id": 5
+	}
+]

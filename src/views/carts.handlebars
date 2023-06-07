@@ -1,0 +1,21 @@
+<div>
+    <h1>Welcome</h1>
+    <h2>Your Cart "{{id}}"</h2>
+    <ul id="products">
+        {{#each products}}
+         <div class=productCard >
+            <h4>id: {{product._id}} </h4>
+            <p>Quantity: {{this.quantity}}</p>
+            <p>Title: {{product.title}}</p>
+            <p>Code: {{product.code}}</p>
+            <p>Price: ${{product.price}}</p>
+            <p>Category: {{product.category}}</p>
+            <button id="deleteButton"  onclick="deleteToCart('{{product._id}}')">Delete from Cart</button>
+        </div>  
+        {{/each}}
+    </ul>   
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/cart.js"></script>

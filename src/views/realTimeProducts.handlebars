@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="subContainer">
+        <h1 class="title">Add product</h1>
+        <form class="form"  id="addForm">
+             <div class="inputContainer">
+                <p>Title</p>
+                <input type="text" id="title">
+            </div>
+             <div class="inputContainer">
+                <p>Description</p>
+                <input type="text" id="description">
+            </div>
+            <div class="inputContainer">
+                <p>Code</p>
+                <input type="text" id="code">
+            </div>
+            <div class="inputContainer">
+                <p>Price</p>
+                <input type="number" id="price">
+            </div>
+            <div class="inputContainer">
+                <p>Stock</p>
+                <input type="number" id="stock">
+            </div>
+             <div class="inputContainer">
+                <p>Category</p>
+                <input type="text" id="category">
+            </div>
+            <button type="submit">Add</button> 
+        </form> 
+    </div>
+    <div class="subContainer">   
+         <h1>Delete product</h1> 
+        <div class="inputContainer">
+            <p>Enter ID number</p>
+             <input type="number" id="deleteInput">
+        </div>
+       
+        <button id="deleteButton">Delete</button>
+    </div>
+    <div class="subContainer"> 
+        <h1>List of products</h1>   
+        <ul id="products"></ul>
+        
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTimeProducts.js"></script>

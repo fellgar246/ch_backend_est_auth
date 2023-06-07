@@ -1,0 +1,21 @@
+<div>
+    <h1>Welcome</h1>
+    <h2>List of all products</h2>
+    <ul id="products">
+        {{#each products}}
+         <div class=productCard >
+            <h4>id {{this._id}} - {{this.title}}</h4>
+            <p>Code: {{this.code}}</p>
+            <p>Price: ${{this.price}}</p>
+            <p>Stock: {{this.stock}}pz</p>
+            <p>Category: {{this.category}}</p>
+            <p>thumbnail: none</p>
+        </div>  
+        {{/each}}
+
+    </ul>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
