@@ -42,5 +42,9 @@ viewsRouter.get('/login',privacy('NO_AUTHENTICATED'),(req,res)=>{
     res.render('login')
 })
 
+viewsRouter.get('/restorePassword',privacy('NO_AUTHENTICATED'), (req,res)=> {
+    res.render('restorePassword')
+})
+
 
 export default viewsRouter;

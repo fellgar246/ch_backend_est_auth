@@ -17,6 +17,7 @@
             <p>Stock: {{this.stock}}pz</p>
             <p>Category: {{this.category}}</p>
             <button id="addButton" onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+            {{!-- <a href="/api/carts/{{this.id}}"> <button></button> </a> --}}
         </div>  
         {{/each}}
     </ul>
