@@ -60,5 +60,11 @@ sessionsRouter.post('/restorePassword', async(req,res) => {
     res.status(200).send({status:"success",message:"Password changed"});
 })
 
+sessionsRouter.get('/github',passport.authenticate('github'), (req, res) => {});
+
+sessionsRouter.get('/githubcallback',passport.authenticate('github'), (req, res) => {
+
+});
+
 
 export default sessionsRouter;
