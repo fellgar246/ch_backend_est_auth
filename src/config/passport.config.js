@@ -73,7 +73,18 @@ const initializePassport = () => {
             async(accessToken, refreshToken, profile, done) =>{
                 try {
                     console.log(profile);
-                    return done(null, false)
+                    const {name, email} = profile._json;
+                    const user = await userModel.findOne({ email });
+
+                    if(!user) {
+                        const newUser = {
+                            first_name: name,
+                            email,
+                            password: ''
+                        }
+                        const result = await userModel.create(newUser);
+                    }
+                    done(null, user)
                 } catch (error) {
                     done(error);
                 }
