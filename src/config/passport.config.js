@@ -83,6 +83,7 @@ const initializePassport = () => {
                             password: ''
                         }
                         const result = await userModel.create(newUser);
+                        done(null,result)
                     }
                     done(null, user)
                 } catch (error) {

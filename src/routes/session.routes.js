@@ -63,7 +63,14 @@ sessionsRouter.post('/restorePassword', async(req,res) => {
 sessionsRouter.get('/github',passport.authenticate('github'), (req, res) => {});
 
 sessionsRouter.get('/githubcallback',passport.authenticate('github'), (req, res) => {
-    
+    const user = req.user;
+    req.session.user = {
+        id: user.id,
+        name: user.first_name,
+        role: user.role,
+        email: user.email
+    }
+    res.send({status:"success", message:"Logueado con GITHUB"})
 });
 
 
