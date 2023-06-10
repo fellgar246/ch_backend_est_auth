@@ -1,7 +1,8 @@
 import { Router } from "express";
 import userModel from "../dao/mongo/models/user.js";
 import passport from "passport";
-import { validatePassword, createHash } from "../utils.js";
+import { validatePassword, createHash, generateToken } from "../utils.js";
+import { authToken } from "../middlewares/jwtAuth.js";
 
 
 const sessionsRouter = Router();
@@ -43,6 +44,44 @@ sessionsRouter.get('/logout',async (req, res) => {
         }
       });   
     res.send({status:"success",message:"Logout"});
+})
+
+sessionsRouter.post('/jwtLogin', async(req, res) => {
+    const {email, password} = req.body;
+
+    let accessToken;
+    if(email==="adminCoder@coder.com" && password==="adminCod3r123"){
+        const user = {
+            id:0,
+            name: 'Admin',
+            role: 'admin',
+            email: 'adminCoder@coder.com'
+        }
+        accessToken = generateToken(user);
+        res.send({status:"success", accessToken: accessToken});
+    }
+
+    let user;
+
+    user = await userModel.findOne({email});
+    if(!user) return res.sendStatus(400);
+
+    const isValidPassword = await validatePassword(password, user.password);
+    if(!isValidPassword) return res.sendStatus(400);
+
+    user = {
+        id: user._id,
+        name: `${user.first_name} ${user.last_name}`,
+        email:user.email,
+        role:user.role
+    }
+    accessToken = generateToken(user);
+    res.send({status:"success", accessToken: accessToken});
+})
+
+sessionsRouter.get('/jwtProfile', authToken, async(req,res) => {
+    console.log(req.user);
+    res.send({status: "success", payload:req.user})
 })
 
 sessionsRouter.post('/restorePassword', async(req,res) => {

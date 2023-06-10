@@ -46,5 +46,9 @@ viewsRouter.get('/restorePassword',privacy('NO_AUTHENTICATED'), (req,res)=> {
     res.render('restorePassword')
 })
 
+viewsRouter.get('/', (req,res) => {
+    res.render('jwtProfile')
+})
+
 
 export default viewsRouter;
