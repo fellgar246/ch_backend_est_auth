@@ -6,6 +6,7 @@ import MongoStore from 'connect-mongo';
 import { Server } from 'socket.io';
 import session from 'express-session';
 import passport from 'passport';
+import 'dotenv/config';
 
 import productsRouter from './routes/products.routes.js';
 import cartsRouter from './routes/carts.routes.js';
@@ -22,7 +23,7 @@ const app = express();
 const PORT = process.env.PORT || 8080; 
 const server = app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
 const io = new Server(server);
-const connection = mongoose.connect("mongodb+srv://root:root@cluster0.lcae78w.mongodb.net/ecommerce?retryWrites=true&w=majority")
+const connection = mongoose.connect(`mongodb+srv://root:${process.env.MONGO_KEY}@cluster0.lcae78w.mongodb.net/ecommerce?retryWrites=true&w=majority`)
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', `${__dirname}/views`);
@@ -33,7 +34,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(`${__dirname}/public`));
 app.use(session({
     store: new MongoStore({
-        mongoUrl: "mongodb+srv://root:root@cluster0.lcae78w.mongodb.net/ecommerce?retryWrites=true&w=majority",
+        mongoUrl: `mongodb+srv://root:${process.env.MONGO_KEY}@cluster0.lcae78w.mongodb.net/ecommerce?retryWrites=true&w=majority`,
         ttl: 3600,
     }),
     secret:"CoderS3cret",

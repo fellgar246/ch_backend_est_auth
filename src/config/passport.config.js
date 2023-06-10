@@ -73,16 +73,17 @@ const initializePassport = () => {
             async(accessToken, refreshToken, profile, done) =>{
                 try {
                     console.log(profile);
-                    const {name, email} = profile._json;
-                    const user = await userModel.findOne({ email });
-
+                    const {name, email, id} = profile._json;
+                    let verifyEmail = email || `${id}@github.com`;
+                    const user = await userModel.findOne({ email: verifyEmail });
                     if(!user) {
                         const newUser = {
                             first_name: name,
-                            email,
+                            email: email || `${id}@github.com`,
                             password: ''
                         }
                         const result = await userModel.create(newUser);
+                        console.log("result", result);
                         done(null,result)
                     }
                     done(null, user)
