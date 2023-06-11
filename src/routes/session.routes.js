@@ -106,7 +106,6 @@ sessionsRouter.get('/githubcallback',passport.authenticate('github'), (req, res)
         role: user.role,
         email: user.email
     }
-    
     res.send({status:"success", message:"Logueado con GITHUB"})
 });
 

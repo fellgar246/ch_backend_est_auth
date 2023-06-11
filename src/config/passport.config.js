@@ -77,6 +77,7 @@ const initializePassport = () => {
                     let verifyEmail = email || `${id}@github.com`;
                     const user = await userModel.findOne({ email: verifyEmail });
                     if(!user) {
+                        console.log("nuevo usuario");
                         const newUser = {
                             first_name: name,
                             email: email || `${id}@github.com`,
@@ -84,9 +85,9 @@ const initializePassport = () => {
                         }
                         const result = await userModel.create(newUser);
                         console.log("result", result);
-                        done(null,result)
+                        return done(null,result)
                     }
-                    done(null, user)
+                    return done(null, user)
                 } catch (error) {
                     done(error);
                 }
